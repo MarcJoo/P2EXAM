@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Image and Video Viewer</title>
+    <link rel="stylesheet" href="style.css">
+    <style>
+        /* Add your CSS styles here */
+    </style>
+</head>
+
+<body>
+    <nav>
+        <h1>Image and Video Viewer</h1>
+        <ul>
+            <li><a href="#">Home</a></li>
+            <li><a href="#">Images</a></li>
+            <li><a href="#">Videos</a></li>
+        </ul>
+    </nav>
+
+   <header>
+    <div class="image-container">
+        <img class="image" src="pic 01.webp" alt="Image 1">
+        <button class="change-image">Change Image</button>
+    </div>
+
+   
+    <div class="image-container">
+        <img class="image" src="pic 02.jpg" alt="Image 2">
+        <button class="change-image">Change Image</button>
+    </div>
+
+    <div class="image-container">
+        <img class="image" src="pic 03.jpg" alt="Image 3">
+        <button class="change-image">Change Image</button>
+    </div>
+</header>
+<br>
+<br>
+<br>
+    <footer>
+    <div id="video-container">
+        <video id="video" controls>
+            <source src="vid 01.mp4" type="video/mp4">
+            Your browser does not support the video tag.
+        </video>
+        <button id="change-video">Change Video</button>
+    </div>
+    <div id="video-container">
+        <video id="video" controls>
+            <source src="vid 02.mp4" type="video/mp4">
+            Your browser does not support the video tag.
+        </video>
+        <button id="change-video">Change Video</button>
+    </div>
+    <div id="video-container">
+        <video id="video" controls>
+            <source src="vid 03.mp4" type="video/mp4">
+            Your browser does not support the video tag.
+        </video>
+        <button id="change-video">Change Video</button>
+    </div>
+     </footer>
+    <script>
+        const images = ["pic 1.jpg", "pic 2.jpeg", "pic 3.webp"];
+        const videos = ["vid 1.mp4", "vid 2.mp4", "vid 3.mp4"];
+        let currentImageIndex = 0;
+        let currentVideoIndex = 0;
+
+        const imageElements = document.querySelectorAll(".image");
+        const changeImageButtons = document.querySelectorAll(".change-image");
+        const videoElement = document.getElementById("video");
+        const changeVideoButton = document.getElementById("change-video");
+
+        // Add click event listeners to each "Change Image" button
+        changeImageButtons.forEach((button, index) => {
+            button.addEventListener("click", () => {
+                currentImageIndex = (currentImageIndex + 1) % images.length;
+                imageElements[index].src = images[currentImageIndex];
+            });
+        });
+
+        // Add click event listener to the "Change Video" button
+        changeVideoButton.addEventListener("click", () => {
+            currentVideoIndex = (currentVideoIndex + 1) % videos.length;
+            videoElement.src = videos[currentVideoIndex];
+        });
+    </script>
+</body>
+</html>
